@@ -1,7 +1,9 @@
 var canvas;
 var canvasContent;
 var ballX = 50;
+var ballY = 50;
 var ballSpeedX = 5;
+var ballSpeedY = 5;
 
 window.onload = function(){
 	canvas = document.getElementById("gameCanvas");
@@ -16,10 +18,15 @@ window.onload = function(){
 
 function animateMotion(){
 	ballX = ballX + ballSpeedX;
+	ballY = ballY + ballSpeedY;
 	if (ballX > canvas.width){
 		ballSpeedX = -ballSpeedX;
 	} else if (ballX < 0){
 		ballSpeedX = -ballSpeedX;
+	} else if (ballY > canvas.height){
+		ballSpeedY = -ballSpeedY;
+	} else if (ballY < 0){
+		ballSpeedY = -ballSpeedY;
 	}
 }
 
@@ -29,7 +36,7 @@ function drawCanvas(){
 	// create left paddle 
 	drawOnCanvas(0,200,10,100,"white");
 	// create ball
-	drawBall(ballX,150,7,"white");
+	drawBall(ballX,ballY,7,"white");
 }
 
 function drawOnCanvas(leftX,topY, width,height, drawColor){
