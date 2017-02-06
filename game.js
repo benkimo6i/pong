@@ -24,12 +24,25 @@ function animateMotion(){
 }
 
 function drawCanvas(){
-	drawOnCanvas(0,0,canvas.width,canvas.height,"black"); // create screen 
-	drawOnCanvas(0,200,10,100,"white"); // create left paddle
-	drawOnCanvas(ballX,100,10,10,"white"); //create ball
+	// create screen 
+	drawOnCanvas(0,0,canvas.width,canvas.height,"black"); 
+	// create left paddle 
+	drawOnCanvas(0,200,10,100,"white");
+	// create ball
+	drawBall(ballX,150,7,"white");
 }
 
 function drawOnCanvas(leftX,topY, width,height, drawColor){
 	canvasContent.fillStyle = drawColor;
 	canvasContent.fillRect(leftX,topY, width,height);
 }
+
+function drawBall(centerX, centerY, radius, drawColor){
+	canvasContent.fillStyle = drawColor;
+	canvasContent.beginPath();
+	canvasContent.arc(centerX, centerY, radius, 0, Math.PI*2, true);
+	canvasContent.fill();
+}
+
+
+
