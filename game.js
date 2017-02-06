@@ -7,14 +7,17 @@ window.onload = function(){
 	canvasContent = canvas.getContext("2d");
 
 	var fPS = 30; // frames per second
-	// setInterval(drawCanvas, 1000/fPS);
+	setInterval(function(){
+		animateMotion();
+		drawCanvas();
+	}, 1000/fPS);
 }
 
-function drawCanvas() {
+function animateMotion(){
 	ballX = ballX + 5;
+}
 
-	console.log(ballX)
-
+function drawCanvas(){
 	canvasContent.fillStyle = "black";
 	canvasContent.fillRect(0,0,canvas.width,canvas.height)
 	canvasContent.fillStyle = "white";
