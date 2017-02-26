@@ -10,6 +10,10 @@ var paddle2Y = 250;
 const PADDLE_THICKNESS = 10;
 const PADDLE_HEIGHT = 100;
 
+var p1Score = 0;
+var p2Score = 0;
+
+
 
 function calcMouse(evt){
 	var rect = canvas.getBoundingClientRect();
@@ -65,12 +69,14 @@ function animateMotion(){
 			ballSpeedX = -ballSpeedX;
 		} else {
 			ballReset();
+			p1Score ++;
 		}
 	} else if (ballX < 0){
 		if (ballY > paddle1Y && ballY < paddle1Y+PADDLE_HEIGHT) {
 			ballSpeedX = -ballSpeedX;
 		} else {
 			ballReset();
+			p2Score ++;
 		}
 	} else if (ballY > canvas.height){
 		ballSpeedY = -ballSpeedY;
@@ -88,6 +94,9 @@ function drawCanvas(){
 	drawOnCanvas(canvas.width - PADDLE_THICKNESS,paddle2Y,PADDLE_THICKNESS,PADDLE_HEIGHT,"white");
 	// create ball
 	drawBall(ballX,ballY,7,"white");
+
+	canvasContent.fillText(p1Score, 100, 100);
+	canvasContent.fillText(p2Score, canvas.width - 100, 100);
 }
 
 function drawOnCanvas(leftX,topY, width,height, drawColor){
